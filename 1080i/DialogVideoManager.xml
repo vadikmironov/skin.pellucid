@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">
+    <defaultcontrol always="true">50</defaultcontrol>
+    <include>fadeInOut</include>
+    <controls>
+        <!--background-->
+        <control type="image">
+            <posx>0</posx>
+            <posy>0</posy>
+            <include>dimensionsFullscreen</include>
+            <texture>colors/black.png</texture>
+            <colordiffuse>ddffffff</colordiffuse>
+            <aspectratio>stretch</aspectratio>
+        </control>
+        <control type="image">
+            <include>dimensionsFullscreen</include>
+            <texture>vignette.png</texture>
+            <aspectratio>stretch</aspectratio>
+        </control>
+        <control type="group">
+            <posx>col-1-begin</posx>
+            <posy>row-2-begin</posy>
+            <!--header-->
+            <control type="label" id="2">
+                <posx>0</posx>
+                <posy>0</posy>
+                <width>24-col</width>
+                <font>pageTitle</font>
+                <textcolor>textActive</textcolor>
+            </control>
+            <control type="group" id="100">
+                <!--version/extras list-->
+                <control type="list" id="50">
+                    <posx>0</posx>
+                    <posy>2-row</posy>
+                    <width>16-col</width>
+                    <height>20-row</height>
+                    <itemlayout width="16-col" height="2-row">
+                        <control type="image">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <width>16-col</width>
+                            <height>69</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture border="0">colors/black.png</texture>
+                            <colordiffuse>textboxInactive</colordiffuse>
+                        </control>
+                        <control type="label">
+                            <posx>col-indent</posx>
+                            <posy>0</posy>
+                            <width>15-col</width>
+                            <height>2-row</height>
+                            <aligny>center</aligny>
+                            <font>itemTitle</font>
+                            <textcolor>textActive</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="16-col" height="2-row">
+                        <control type="image">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <width>16-col</width>
+                            <height>2-row</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture border="0">colors/white.png</texture>
+                            <colordiffuse>highlight</colordiffuse>
+                        </control>
+                        <control type="label">
+                            <posx>col-indent</posx>
+                            <posy>0</posy>
+                            <width>15-col</width>
+                            <height>2-row</height>
+                            <aligny>center</aligny>
+                            <font>itemTitle</font>
+                            <textcolor>textActive</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="scrollbar" id="60">
+                    <posx>16-col</posx>
+                    <posy>2-row</posy>
+                    <width>12</width>
+                    <height>20-row</height>
+                    <orientation>vertical</orientation>
+                    <texturesliderbackground border="0,10,0,10">scroll-bar.png</texturesliderbackground>
+                    <texturesliderbar border="0,10,0,10">scroll-bar.png</texturesliderbar>
+                    <texturesliderbarfocus border="0,10,0,10">scroll-bar.png</texturesliderbarfocus>
+                    <textureslidernib></textureslidernib>
+                    <textureslidernibfocus></textureslidernibfocus>
+                </control>
+            </control>
+            <!--action buttons-->
+            <control type="grouplist" id="101">
+                <posx>17-col</posx>
+                <posy>2-row</posy>
+                <width>7-col</width>
+                <height>20-row</height>
+                <orientation>vertical</orientation>
+                <itemgap>4</itemgap>
+                <onleft>50</onleft>
+                <!--play-->
+                <control type="button" id="21">
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[208]</label>
+                </control>
+                <!--rename (versions)-->
+                <control type="button" id="22">
+                    <visible>Window.IsVisible(managevideoversions)</visible>
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[40014]</label>
+                </control>
+                <!--rename (extras)-->
+                <control type="button" id="23">
+                    <visible>Window.IsVisible(managevideoextras)</visible>
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[40015]</label>
+                </control>
+                <!--choose art-->
+                <control type="button" id="27">
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[13511]</label>
+                </control>
+                <!--set default (versions)-->
+                <control type="button" id="24">
+                    <visible>Window.IsVisible(managevideoversions)</visible>
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[40004]</label>
+                </control>
+                <!--add (extras)-->
+                <control type="button" id="28">
+                    <visible>Window.IsVisible(managevideoextras)</visible>
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[118]</label>
+                </control>
+                <!--new version-->
+                <control type="button" id="25">
+                    <visible>Window.IsVisible(managevideoversions)</visible>
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[40023]</label>
+                </control>
+                <!--remove-->
+                <control type="button" id="26">
+                    <width>7-col</width>
+                    <height>2-row</height>
+                    <font>itemTitle</font>
+                    <textcolor>textActive</textcolor>
+                    <focusedcolor>textActive</focusedcolor>
+                    <texturefocus colordiffuse="highlight">colors/white.png</texturefocus>
+                    <texturenofocus colordiffuse="textboxInactive">colors/black.png</texturenofocus>
+                    <label>$LOCALIZE[15015]</label>
+                </control>
+            </control>
+        </control>
+        <!--debugging-->
+        <include>DebugGrid</include>
+        <control type="label">
+            <include>DialogID</include>
+            <label>DialogVideoManager.xml</label>
+        </control>
+    </controls>
+</window>

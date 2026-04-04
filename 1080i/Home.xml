@@ -4,7 +4,7 @@
 	<include>fadeInOut</include>
 	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9001&amp;group=mainmenu|videosubmenu|musicsubmenu|picturessubmenu|gamesubmenu)</onload>
 	<onload condition="Skin.hassetting(stopVideoOnMenu) + !Player.HasAudio">PlayerControl(stop)</onload>
-	<onload>AlarmClock(hidemenu,setfocus(9999),00:20,true)</onload>
+	<onload>AlarmClock(hidemenu,Control.SetFocus(9999),00:20,true)</onload>
 	<onunload>CancelAlarm(hidemenu,true)</onunload>
 	<controls>
 		<include>globalBackground</include>
@@ -155,7 +155,7 @@
 				<posy>row-12-begin</posy>
 				<width>18-col</width>
 				<height>12-row</height>
-				<ondown>setfocus(9001,1)</ondown>
+				<ondown>Control.SetFocus(9001,1)</ondown>
 				<orientation>vertical</orientation>
 				<itemlayout width="4-col" height="3-row">
 					<control type="image">
@@ -384,11 +384,11 @@
             <posy>0</posy>
             <width>1-col</width>
             <height>2-row</height>
-			<onleft>setfocus(9000,0)</onleft>
-			<onright>setfocus(9000,0)</onright>
-			<onup>setfocus(9000,0)</onup>
-			<ondown>setfocus(9000,0)</ondown>
-			<onclick>setfocus(9000,0)</onclick>
+			<onleft>Control.SetFocus(9000,0)</onleft>
+			<onright>Control.SetFocus(9000,0)</onright>
+			<onup>Control.SetFocus(9000,0)</onup>
+			<ondown>Control.SetFocus(9000,0)</ondown>
+			<onclick>Control.SetFocus(9000,0)</onclick>
         </control>
 		<!--debugging-->
 		<include>DebugGrid</include>
