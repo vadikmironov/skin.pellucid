@@ -38,7 +38,7 @@
                 <aspectratio>stretch</aspectratio>
             </control>
             <!--title-->
-            <control type="label">
+            <control type="label" id="500">
                 <posx>24</posx>
                 <posy>0</posy>
                 <width>18-col-gutter</width>
@@ -96,6 +96,18 @@
                     <onright>211</onright>
                     <width>5-col-gutter</width>
                     <label>$ADDON[script.skinshortcuts 32028]</label>
+                </control>
+                <control type="button" id="401">
+                    <description>Select shortcut</description>
+                    <onright>211</onright>
+                    <width>5-col-gutter</width>
+                    <label>$ADDON[script.skinshortcuts 32058]</label>
+                </control>
+                <control type="button" id="306">
+                    <description>Browse for thumbnail</description>
+                    <visible>false</visible>
+                    <width>5-col-gutter</width>
+                    <label>$ADDON[script.skinshortcuts 32026]</label>
                 </control>
             </control>
 			<!-- id 211 - Current shortcuts -->
