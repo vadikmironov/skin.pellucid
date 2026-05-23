@@ -1,4 +1,56 @@
 **Changelog**
+[V3.1.1] ***OMEGA STABILITY FIX***
+Fixes a hard SIGSEGV crash on Kodi 21 Omega + Ubuntu 24.04 (Python 3.12).
+
+- Root cause: Home.xml fired RunScript(script.skinshortcuts,type=buildxml...)
+  on every <onload> of the home window. RunScript is fire-and-forget, so
+  navigating home -> section -> home faster than a build finishes (~300ms-1s)
+  left two Python sub-interpreters alive at once. Python 3.12 tightened its
+  garbage-collector invariants during Py_EndInterpreter teardown, turning what
+  was a benign race on Python 3.10/3.11 into a hard segfault in
+  PyObject_GC_UnTrack -> _PyModule_ClearDict.
+
+- Fix (skin-side, no addon forking): the menu build no longer sits on the home
+  window's hot path. It now runs from Startup.xml, which loads once per Kodi
+  session, guarded by a "menuBuilt" skin flag so it executes once per install.
+  The home navigation path now launches zero Python interpreters, so rapid
+  home re-entry can no longer create overlapping interpreters. The Skin
+  Shortcuts management dialog still rebuilds the menu on close, as before.
+
+- Added a "Rebuild home menu" button under Settings > Menus (string #31175).
+  With the build moved off the home window, the existing "Reload skin" button
+  alone won't regenerate the menu once menuBuilt is set; this button forces a
+  one-shot rebuild + reload, mainly as a recovery path.
+
+- How this differs from the cjmontgom/skin.pellucid.omega fork: that fork
+  "fixes" the same crash by removing Skin Shortcuts entirely -- it drops the
+  script.skinshortcuts dependency, deletes the menu editor, removes every
+  buildxml trigger, and replaces the dynamic home menu with a STATIC
+  "menus-mainmenu" include. That makes the crash impossible but also removes
+  the customisable menu and the menu editor completely, and that fork still
+  carries other unfixed Omega deprecations (e.g. bare setfocus()). This fork
+  keeps the dynamic, fully editable Skin Shortcuts menu and fixes the actual
+  concurrency cause -- so you keep customisation AND gain stability.
+
+[V3.1.0] ***OMEGA RELEASE***
+- Updated for Kodi 21 (Omega): xbmc.gui bumped 5.15.0 -> 5.17.0.
+- script.skinshortcuts dependency bumped to 2.0.3 (MikeSiLVO's Python 3
+  compatible fork).
+- Fixed String.String.IsEmpty -> String.IsEmpty typos (Includes.xml,
+  DialogKeyboard.xml).
+- Replaced deprecated built-ins: ReplaceWindow -> ActivateWindow(...,replace)
+  in Startup.xml; MusicPlayer.Cover -> Player.Art(thumb) in
+  custom_musicPlayerFullscreen.xml; bare setfocus() -> Control.SetFocus() in
+  Home.xml.
+- Added MyFavourites.xml (Omega moved Favourites from a dialog to window
+  10060).
+- Added DialogVideoManager.xml (Omega Video Versions / Video Extras, windows
+  12004 / 12017).
+- Added empty Timers.xml to silence the missing-timers warning.
+- Added missing Skin Shortcuts v2.x management controls (500, 401, 306) to
+  script-skinshortcuts.xml.
+- Fixed DialogFavourites.xml vignette texture path.
+
 [V3.0.0]
 - Updated for Kodi Matrix
 

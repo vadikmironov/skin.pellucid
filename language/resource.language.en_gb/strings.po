@@ -344,6 +344,10 @@ msgctxt "#31174"
 msgid "Edit picture section menu"
 msgstr ""
 
+msgctxt "#31175"
+msgid "Rebuild home menu"
+msgstr ""
+
 msgctxt "#31176"
 msgid "New Movies"
 msgstr ""

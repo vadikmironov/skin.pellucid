@@ -3,6 +3,15 @@
     <defaultcontrol always="true">10</defaultcontrol>
     <onload>Skin.Reset(DebugInfo)</onload>
     <onload>Skin.Reset(DebugGrid)</onload>
+    <!--
+      Build the skinshortcuts menu here. Startup.xml loads once per Kodi
+      session, unlike Home.xml which loads on every return to home. The
+      menuBuilt flag makes the build run once per install. Keeping
+      buildxml off the home navigation path is what stops overlapping
+      Python interpreters spawning and segfaulting Py3.12 on teardown.
+    -->
+    <onload condition="!Skin.HasSetting(menuBuilt)">RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9001&amp;group=mainmenu|videosubmenu|musicsubmenu|picturessubmenu|gamesubmenu)</onload>
+    <onload condition="!Skin.HasSetting(menuBuilt)">Skin.SetBool(menuBuilt)</onload>
     <controls>
         <control type="button" id="10">
             <description>Startup Trigger</description>

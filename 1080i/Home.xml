@@ -2,7 +2,12 @@
 <window id="0">
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<include>fadeInOut</include>
-	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9001&amp;group=mainmenu|videosubmenu|musicsubmenu|picturessubmenu|gamesubmenu)</onload>
+	<!--
+	  Menu build intentionally NOT here. It moved to Startup.xml
+	  (menuBuilt-guarded). Firing buildxml on every home <onload> let
+	  rapid home re-entry spawn concurrent skinshortcuts Python
+	  interpreters that segfault on Py3.12 teardown. Do not re-add here.
+	-->
 	<onload condition="Skin.hassetting(stopVideoOnMenu) + !Player.HasAudio">PlayerControl(stop)</onload>
 	<onload>AlarmClock(hidemenu,Control.SetFocus(9999),00:20,true)</onload>
 	<onunload>CancelAlarm(hidemenu,true)</onunload>
