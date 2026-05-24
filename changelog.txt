@@ -1,4 +1,14 @@
 **Changelog**
+[V3.1.2] ***OMEGA STABILITY FIX (follow-up)***
+v3.1.1 fixed the home-navigation crash but the same Py3.12 SIGSEGV still
+hit when editing menus via Settings. Cause: buildxml (which reloads the
+skin itself) fired from two <onunload> handlers in one session --
+SkinSettings.xml and script-skinshortcuts.xml -- so closing both ran it
+twice, racing two Python interpreters on teardown. Fix: rebuild now fires
+only from script-skinshortcuts.xml's <onunload>; removed the duplicate on
+SkinSettings.xml and the racing explicit ReloadSkin() on the recovery
+button. One buildxml + one reload per edit session.
+
 [V3.1.1] ***OMEGA STABILITY FIX***
 Fixes a hard SIGSEGV crash on Kodi 21 Omega + Ubuntu 24.04 (Python 3.12).
 

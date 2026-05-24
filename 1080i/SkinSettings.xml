@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
     <defaultcontrol always="true">8000</defaultcontrol>
-    <onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9001&amp;group=mainmenu|videosubmenu|musicsubmenu|picturessubmenu|gamesubmenu)</onunload>
+    <!--
+      No buildxml on this window's <onunload>. The menu rebuild is owned
+      solely by script-skinshortcuts.xml's <onunload> (the manage dialog),
+      which is the only place shortcuts actually change. Having buildxml
+      here too meant backing out of the manage dialog and then closing
+      SkinSettings fired TWO buildxml RunScripts in a row; each one calls
+      ReloadSkin() internally, so two skin reloads landed ~5s apart and
+      their Python sub-interpreters tore down concurrently -> SIGSEGV in
+      Py_EndInterpreter on Py3.12 (Omega/Ubuntu 24.04). Toggling the
+      settings on this window never touches the shortcuts, so nothing here
+      needs a rebuild. Do not re-add buildxml to this <onunload>.
+    -->
     <controls>
         <!--background-->
         <include>globalBackground</include>
@@ -222,9 +233,17 @@
                     <description>Rebuild home menu from saved shortcuts (recovery)</description>
                     <width>14-col</width>
                     <label>31175</label>
+                    <!--
+                      buildxml is fire-and-forget and calls ReloadSkin()
+                      itself once it has rebuilt the menu. The old explicit
+                      <onclick>ReloadSkin()</onclick> below fired immediately,
+                      racing the still-running buildxml interpreter and adding
+                      a second reload -> the same concurrent Py_EndInterpreter
+                      teardown SIGSEGV. Let buildxml own the reload; just go
+                      home afterwards.
+                    -->
                     <onclick>Skin.SetBool(menuBuilt)</onclick>
                     <onclick>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9001&amp;group=mainmenu|videosubmenu|musicsubmenu|picturessubmenu|gamesubmenu)</onclick>
-                    <onclick>ReloadSkin()</onclick>
                     <onclick>activateWindow(home)</onclick>
                 </control>
                 <control type="radiobutton" id="17">
