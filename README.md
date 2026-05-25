@@ -7,6 +7,8 @@ This is a maintained fork of [chrisbevan/skin.pellucid](https://github.com/chris
 
 Built for the living room, Pellucid is a clean and carefully designed Kodi experience designed for maximum usability and minimum fuss.
 
+![Pellucid home screen](resources/screenshot-01.jpg)
+
 #### Features
 
 - Full home screen menu customization via Skin Shortcuts
@@ -60,6 +62,12 @@ For stability on Kodi 21 Omega, Pellucid builds the menu **once per install**
 per-visit rebuild could spawn overlapping Skin Shortcuts processes and crash
 Kodi under Python 3.12. If the menu ever goes missing or out of sync, use the
 **Rebuild home menu** button in the Menus settings to force a one-shot rebuild.
+
+#### Screenshots
+
+| Library | Info dialog |
+|---------|-------------|
+| ![Movies library](resources/screenshot-03.jpg) | ![Movie info](resources/screenshot-02.jpg) |
 
 #### Credits
 
