@@ -78,6 +78,7 @@
                     </item>
                     <item id="5">
                         <label>13013</label>
+                        <visible>System.CanReboot</visible>
                         <thumb></thumb>
                         <onclick>Reboot()</onclick>
                     </item>

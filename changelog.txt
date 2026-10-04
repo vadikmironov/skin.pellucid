@@ -1,4 +1,9 @@
 **Changelog**
+[V3.1.4] ***POWER MENU FIX***
+- Reboot was always shown in the power menu, even where the system does
+  not allow Kodi to reboot. It now follows System.CanReboot, like Power
+  off, Suspend and Hibernate already did.
+
 [V3.1.3] ***ADD-ON INFO DIALOG FIXES***
 - The cursor no longer gets stuck on the add-on info page of add-ons with
   settings (e.g. Skin Shortcuts) or not yet installed. Kodi focuses its own
