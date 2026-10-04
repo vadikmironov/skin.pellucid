@@ -1,4 +1,13 @@
 **Changelog**
+[V3.1.6] ***TRANSLATIONS***
+- Imported upstream Pellucid's translations from 2021-2024 (~2,000 newly
+  translated strings in 67 languages; Spanish, Italian, Dutch, Russian,
+  Chinese and Indonesian now complete), translated add-on summaries and
+  descriptions, and dropped three languages Kodi does not support.
+  Upstream's removal of Skin Shortcuts is NOT included.
+- "Rebuild home menu" translated in the 11 languages that translate the
+  rest of the Menus settings.
+
 [V3.1.5] ***ADD-ON AUTO-UPDATE TOGGLE FIX***
 - Selecting Auto-update on an add-on's info page did nothing: the menu
   sent Kodi a click without flipping the toggle, so Kodi saved the old
