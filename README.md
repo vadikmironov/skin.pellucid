@@ -31,8 +31,9 @@ repo. To install it from its release zip instead:
 1. Download
    [script.skinshortcuts-2.0.3.zip](https://github.com/MikeSiLVO/script.skinshortcuts/releases/download/v2.0.3/script.skinshortcuts-2.0.3.zip)
    -- not the latest release, which is 3.x
-2. In Kodi: **Settings > Add-ons > Install from zip file** and select the
-   downloaded zip
+2. In Kodi, turn on **Settings > System > Add-ons > Unknown sources**, then
+   **Settings > Add-ons > Install from zip file** and select the downloaded
+   zip
 
 Kodi 22 (Piers)'s official repo carries Skin Shortcuts 3.x. Before upgrading
 to Kodi 22, turn off its auto-update: **Settings > System > Add-ons > Manage
@@ -42,10 +43,12 @@ dependencies > Skin Shortcuts**, then select **Auto-update** until it shows
 #### Installing Pellucid
 
 Download `skin.pellucid-<version>.zip` from the
-[latest release](https://github.com/vadikmironov/skin.pellucid/releases/latest),
-then in Kodi: **Settings > Add-ons > Install from zip file**. If Skin Shortcuts
-is not installed yet, Kodi 21 installs 2.0.3 from its official repo along with
-it. Then select Pellucid under **Settings > Interface > Skin**.
+[latest release](https://github.com/vadikmironov/skin.pellucid/releases/latest).
+In Kodi, turn on **Settings > System > Add-ons > Unknown sources** (Kodi only
+installs zip files with it on), then **Settings > Add-ons > Install from zip
+file**. If Skin Shortcuts is not installed yet, Kodi 21 installs 2.0.3 from its
+official repo along with it. Then select Pellucid under
+**Settings > Interface > Skin**.
 
 To track the latest changes instead, install it from git -- clone it into your
 Kodi add-ons directory, making sure the folder is named exactly
