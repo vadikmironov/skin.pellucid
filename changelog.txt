@@ -4,6 +4,9 @@
   name no longer disappears after editing a rule, and saving pre-fills the
   file name from it. The name field was a text box that kept the name to
   itself instead of the button Kodi expects.
+- Smart playlist editor: added Group by and mixed groups (e.g. movies by
+  set, optionally mixed with movies not in a set), which Kodi supports but
+  the skin had no controls for.
 
 [V3.1.6] ***TRANSLATIONS***
 - Imported upstream Pellucid's translations from 2021-2024 (~2,000 newly

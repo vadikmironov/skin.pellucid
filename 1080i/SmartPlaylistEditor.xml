@@ -59,7 +59,7 @@
                         <ondown>22</ondown>
                     </control>
                 </control>
-                <!--set playlist type, limits and sort-->
+                <!--set playlist type, limits, sort and grouping-->
                 <control type="group">
                     <posx>0</posx>
                     <posy>5-row</posy>
@@ -67,7 +67,7 @@
                         <posx>0</posx>
                         <posy>0</posy>
                         <width>12-col</width>
-                        <height>5-row</height>
+                        <height>264</height>
                         <texture>colors/black.png</texture>
                         <colordiffuse>overlay</colordiffuse>
                         <aspectratio>stretch</aspectratio>
@@ -101,7 +101,7 @@
                         <texturenofocus colordiffuse="overlay">colors/black.png</texturenofocus>
                         <onright>19</onright>
                         <onup>22</onup>
-                        <ondown>10</ondown>
+                        <ondown>23</ondown>
                     </control>
                     <control type="button" id="19">
                         <posx>6-col</posx>
@@ -116,13 +116,36 @@
                         <onright>9002</onright>
                         <onup>17</onup>
                         <onleft>18</onleft>
+                        <ondown>24</ondown>
+                    </control>
+                    <!--group by / mixed groups: Kodi sets the group as
+                        label2 and disables both for playlist types that
+                        cannot be grouped (navigation then skips them)-->
+                    <control type="button" id="23">
+                        <posx>12</posx>
+                        <posy>180</posy>
+                        <width>6-col-gutter</width>
+                        <label>21458</label>
+                        <texturenofocus colordiffuse="overlay">colors/black.png</texturenofocus>
+                        <onright>24</onright>
+                        <onup>18</onup>
+                        <ondown>10</ondown>
+                    </control>
+                    <control type="radiobutton" id="24">
+                        <posx>6-col</posx>
+                        <posy>180</posy>
+                        <width>420</width>
+                        <label>$LOCALIZE[21458]: $LOCALIZE[21459]</label>
+                        <onright>9002</onright>
+                        <onup>19</onup>
+                        <onleft>23</onleft>
                         <ondown>10</ondown>
                     </control>
                 </control>
                 <!--rules list-->
                 <control type="group">
                     <posx>0</posx>
-                    <posy>372</posy>
+                    <posy>456</posy>
                     <control type="image">
                         <posx>0</posx>
                         <posy>0</posy>
@@ -138,7 +161,7 @@
                         <posy>12</posy>
                         <width>11-col-gutter</width>
                         <height>4-row</height>
-                        <onup>18</onup>
+                        <onup>23</onup>
                         <onleft>9001</onleft>
                         <ondown>16</ondown>
                         <itemlayout width="12-col" height="2-row">
@@ -213,11 +236,11 @@
                 <!--add / edit / delete rules-->
                 <control type="panel" id="9001">
                     <posx>12</posx>
-                    <posy>382</posy>
+                    <posy>466</posy>
                     <width>12-col-gutter</width>
                     <height>8-row</height>
                     <onright>10</onright>
-                    <onup>18</onup>
+                    <onup>23</onup>
                     <orientation>horizontal</orientation>
                     <itemlayout width="3-col" height="2-row">
                         <control type="image">
@@ -278,7 +301,7 @@
                 <!--OK / Cancel-->
                 <control type="panel" id="9002">
                     <posx>0</posx>
-                    <posy>780</posy>
+                    <posy>864</posy>
                     <width>8-col</width>
                     <height>2-row</height>
                     <orientation>horizontal</orientation>
