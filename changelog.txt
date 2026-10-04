@@ -1,4 +1,12 @@
 **Changelog**
+[V3.1.3] ***ADD-ON INFO DIALOG FIXES***
+- The cursor no longer gets stuck on the add-on info page of add-ons with
+  settings (e.g. Skin Shortcuts) or not yet installed. Kodi focuses its own
+  Configure / Install buttons on open, which Pellucid hides; focus now goes
+  straight back to Pellucid's menu.
+- The "Launch addon" entry was really Kodi's Auto-update toggle; it is now
+  labelled "Auto-update", and a real Launch / Open / Use entry is added.
+
 [V3.1.2] ***OMEGA STABILITY FIX (follow-up)***
 v3.1.1 fixed the home-navigation crash but the same Py3.12 SIGSEGV still
 hit when editing menus via Settings. Cause: buildxml (which reloads the

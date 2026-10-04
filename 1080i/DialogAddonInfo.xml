@@ -212,12 +212,21 @@
                         </control>
                     </focusedlayout>
                     <content>
-                        <item id="1">
-							<visible>Control.IsEnabled(13)</visible>
-                            <label>31117</label>
+                        <!--launch / open / use: label set by Kodi-->
+                        <item id="8">
+                            <visible>Control.IsEnabled(12)</visible>
+                            <label>$INFO[Control.GetLabel(12)]</label>
                             <label2></label2>
                             <thumb></thumb>
-                            <onclick>sendclick(146,13)</onclick>
+                            <onclick>SendClick(146,12)</onclick>
+                        </item>
+                        <!--auto-update toggle: label set by Kodi-->
+                        <item id="1">
+                            <visible>Control.IsEnabled(13)</visible>
+                            <label>$INFO[Control.GetLabel(13)]</label>
+                            <label2></label2>
+                            <thumb></thumb>
+                            <onclick>SendClick(146,13)</onclick>
                         </item>
                         <item id="2">
                             <label>$INFO[Control.GetLabel(6)]</label>
@@ -264,35 +273,47 @@
                 </control>
             </control>
         </control>
-        <!--buttons-->
+        <!--buttons: hidden, driven by the list above via SendClick.
+            Kodi focuses some of them itself when the dialog opens
+            (Configure for add-ons with settings, Install for ones
+            not yet installed); hand focus straight back to the
+            list, or the cursor is stuck on an invisible button.-->
         <control type="group">
             <visible>false</visible>
             <control type="button" id="6">
                 <description>Install / Uninstall addon</description>
+                <onfocus>SetFocus(8000)</onfocus>
                 <label>24022</label>
             </control>
             <control type="button" id="7">
                 <description>Disable Addon button</description>
+                <onfocus>SetFocus(8000)</onfocus>
             </control>
             <control type="button" id="8">
                 <description>Update Addon button</description>
+                <onfocus>SetFocus(8000)</onfocus>
                 <label>24069</label>
             </control>
             <control type="button" id="9">
                 <description>Addon Settings</description>
+                <onfocus>SetFocus(8000)</onfocus>
                 <label>24020</label>
             </control>
             <control type="button" id="10">
                 <description>Addon Dependencies</description>
+                <onfocus>SetFocus(8000)</onfocus>
             </control>
             <control type="button" id="12">
                 <description>Launch addon</description>
+                <onfocus>SetFocus(8000)</onfocus>
             </control>
             <control type="radiobutton" id="13">
-                <description>Launch addon</description>
+                <description>Auto-update toggle</description>
+                <onfocus>SetFocus(8000)</onfocus>
             </control>
             <control type="button" id="14">
                 <description>Version</description>
+                <onfocus>SetFocus(8000)</onfocus>
 				<label>24069</label>
             </control>
         </control>
