@@ -41,8 +41,14 @@ dependencies > Skin Shortcuts**, then select **Auto-update** until it shows
 
 #### Installing Pellucid
 
-This fork has no release zips, so install it straight from git -- clone it into
-your Kodi add-ons directory, making sure the folder is named exactly
+Download `skin.pellucid-<version>.zip` from the
+[latest release](https://github.com/vadikmironov/skin.pellucid/releases/latest),
+then in Kodi: **Settings > Add-ons > Install from zip file**. If Skin Shortcuts
+is not installed yet, Kodi 21 installs 2.0.3 from its official repo along with
+it. Then select Pellucid under **Settings > Interface > Skin**.
+
+To track the latest changes instead, install it from git -- clone it into your
+Kodi add-ons directory, making sure the folder is named exactly
 `skin.pellucid`:
 
 ```bash
@@ -56,9 +62,6 @@ update later:
 ```bash
 cd ~/.kodi/addons/skin.pellucid && git pull
 ```
-
-(Prefer a zip? GitHub's **Code > Download ZIP** works too, but rename the
-extracted `skin.pellucid-master` folder to `skin.pellucid` first.)
 
 #### Editing the home menu
 

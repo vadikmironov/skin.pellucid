@@ -1,0 +1,48 @@
+name: Release
+
+# Push a tag v<version> matching addon.xml to publish a GitHub Release with
+# an installable zip. Kodi needs the zip's top folder to be exactly
+# skin.pellucid/, hence git archive --prefix rather than GitHub's source zip.
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6 pinned
+
+      - name: Check tag matches addon.xml version
+        run: |
+          VERSION=$(grep -oP '<addon id="skin.pellucid" version="\K[^"]+' addon.xml)
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "Error: tag $GITHUB_REF_NAME does not match addon.xml version $VERSION" >&2
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Build zip
+        run: |
+          git archive --format=zip --prefix=skin.pellucid/ \
+            -o "skin.pellucid-$VERSION.zip" HEAD
+          unzip -l "skin.pellucid-$VERSION.zip" | tail -1
+
+      - name: Release notes from changelog.txt
+        run: |
+          awk -v v="[V$VERSION]" 'index($0, v) == 1 {f = 1} f && /^\[V/ && index($0, v) != 1 {exit} f' \
+            changelog.txt > notes.md
+          printf '\nRequires Kodi 21 (Omega) and Skin Shortcuts 2.0.3 - see the README.\n' >> notes.md
+          cat notes.md
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "skin.pellucid-$VERSION.zip" \
+            --title "Pellucid $VERSION" --notes-file notes.md
