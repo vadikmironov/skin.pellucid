@@ -1,4 +1,10 @@
 **Changelog**
+[V3.1.7] ***SMART PLAYLIST EDITOR FIX***
+- Naming a smart playlist works: no second, empty keyboard after Done, the
+  name no longer disappears after editing a rule, and saving pre-fills the
+  file name from it. The name field was a text box that kept the name to
+  itself instead of the button Kodi expects.
+
 [V3.1.6] ***TRANSLATIONS***
 - Imported upstream Pellucid's translations from 2021-2024 (~2,000 newly
   translated strings in 67 languages; Spanish, Italian, Dutch, Russian,

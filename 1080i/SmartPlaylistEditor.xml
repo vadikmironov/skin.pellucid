@@ -42,7 +42,10 @@
                         <colordiffuse>overlay</colordiffuse>
                         <aspectratio>stretch</aspectratio>
                     </control>
-                    <control type="edit" id="12">
+                    <!--a button, not an edit control: on click Kodi opens
+                        its own keyboard, stores the name and shows it as
+                        label2 (and pre-fills the file name from it)-->
+                    <control type="button" id="12">
                         <description>Name Button</description>
                         <posx>12</posx>
                         <posy>12</posy>
@@ -50,9 +53,8 @@
                         <texturenofocus colordiffuse="99ffffff">colors/offblack.png</texturenofocus>
                         <texturefocus>colors/offblack.png</texturefocus>
                         <textoffsetx>24</textoffsetx>
-                        <hinttext>31211</hinttext>
                         <align>left</align>
-                        <label></label>
+                        <label>21433</label>
                         <onright>9002</onright>
                         <ondown>22</ondown>
                     </control>
