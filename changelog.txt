@@ -1,4 +1,12 @@
 **Changelog**
+[V3.1.5] ***ADD-ON AUTO-UPDATE TOGGLE FIX***
+- Selecting Auto-update on an add-on's info page did nothing: the menu
+  sent Kodi a click without flipping the toggle, so Kodi saved the old
+  state. It now presses the toggle for real, and the entry shows the
+  current state ("Auto-update: On" / "Auto-update: Off").
+- README: Skin Shortcuts 2.0.3 is a hard requirement (3.x is a rewrite;
+  a 3.x port is work in progress).
+
 [V3.1.4] ***POWER MENU FIX***
 - Reboot was always shown in the power menu, even where the system does
   not allow Kodi to reboot. It now follows System.CanReboot, like Power

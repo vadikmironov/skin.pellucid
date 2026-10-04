@@ -18,17 +18,26 @@ Built for the living room, Pellucid is a clean and carefully designed Kodi exper
 #### Requirements
 
 - Kodi 21 (Omega)
-- [script.skinshortcuts](https://github.com/MikeSiLVO/script.skinshortcuts) v2.0.3+ (MikeSiLVO's maintained fork -- not available in the official Kodi addon repo)
+- [script.skinshortcuts](https://github.com/MikeSiLVO/script.skinshortcuts)
+  **2.0.3** -- a hard dependency on the 2.x line. Skin Shortcuts 3.x is a
+  complete rewrite that does not work with Pellucid's menus; a port of
+  Pellucid to 3.x is work in progress.
 
 #### Installing Skin Shortcuts
 
-Pellucid needs the Skin Shortcuts add-on, which is not in the official Kodi
-repo:
+Pellucid needs Skin Shortcuts 2.0.3, the version in Kodi 21's official add-on
+repo. To install it from its release zip instead:
 
-1. Download the latest release zip from
-   [MikeSiLVO/script.skinshortcuts](https://github.com/MikeSiLVO/script.skinshortcuts/releases)
+1. Download
+   [script.skinshortcuts-2.0.3.zip](https://github.com/MikeSiLVO/script.skinshortcuts/releases/download/v2.0.3/script.skinshortcuts-2.0.3.zip)
+   -- not the latest release, which is 3.x
 2. In Kodi: **Settings > Add-ons > Install from zip file** and select the
    downloaded zip
+
+Kodi 22 (Piers)'s official repo carries Skin Shortcuts 3.x. Before upgrading
+to Kodi 22, turn off its auto-update: **Settings > System > Add-ons > Manage
+dependencies > Skin Shortcuts**, then select **Auto-update** until it shows
+**Off**.
 
 #### Installing Pellucid
 

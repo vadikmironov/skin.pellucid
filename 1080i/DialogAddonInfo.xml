@@ -220,13 +220,27 @@
                             <thumb></thumb>
                             <onclick>SendClick(146,12)</onclick>
                         </item>
-                        <!--auto-update toggle: label set by Kodi-->
+                        <!--auto-update toggle, one entry per state. Kodi reads
+                            the radiobutton's new state when it is clicked and
+                            SendClick does not flip it, so press it for real:
+                            focus it, select, return to this list-->
                         <item id="1">
-                            <visible>Control.IsEnabled(13)</visible>
-                            <label>$INFO[Control.GetLabel(13)]</label>
-                            <label2></label2>
+                            <visible>Control.IsEnabled(13) + ListItem.IsAutoUpdateable</visible>
+                            <label>$INFO[Control.GetLabel(13)]: $LOCALIZE[16041]</label>
+                            <label2></label2>
                             <thumb></thumb>
-                            <onclick>SendClick(146,13)</onclick>
+                            <onclick>SetFocus(13)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>SetFocus(8000)</onclick>
+                        </item>
+                        <item id="9">
+                            <visible>Control.IsEnabled(13) + !ListItem.IsAutoUpdateable</visible>
+                            <label>$INFO[Control.GetLabel(13)]: $LOCALIZE[16039]</label>
+                            <label2></label2>
+                            <thumb></thumb>
+                            <onclick>SetFocus(13)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>SetFocus(8000)</onclick>
                         </item>
                         <item id="2">
                             <label>$INFO[Control.GetLabel(6)]</label>
@@ -307,9 +321,10 @@
                 <description>Launch addon</description>
                 <onfocus>SetFocus(8000)</onfocus>
             </control>
+            <!--no focus bounce here: the list focuses this one on purpose
+                to press it, and Kodi never focuses it by itself-->
             <control type="radiobutton" id="13">
                 <description>Auto-update toggle</description>
-                <onfocus>SetFocus(8000)</onfocus>
             </control>
             <control type="button" id="14">
                 <description>Version</description>
